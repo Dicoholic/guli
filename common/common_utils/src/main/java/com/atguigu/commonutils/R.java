@@ -28,7 +28,9 @@ public class R {
     @ApiModelProperty("返回数据")
     private Map<String,Object> data = new HashMap<>();
 
-    private static R ok(){
+    private R(){}
+
+    public static R ok(){
         R r = new R();
         r.setSuccess(true);
         r.setCode(ResultCode.SUCCESS);
@@ -36,7 +38,7 @@ public class R {
         return r;
     }
 
-    private static R error(){
+    public static R error(){
         R r = new R();
         r.setSuccess(false);
         r.setCode(ResultCode.ERROR);
