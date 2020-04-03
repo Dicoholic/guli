@@ -1,0 +1,22 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: service-oss
+  profiles:
+    active: dev
+
+
+aliyun:
+  oss:
+    file:
+      endpoint: oss-cn-shanghai.aliyuncs.com
+      keyid: LTAI4Fvernm36k3qfFA9un7c
+      keysecret: jJCFEBq0uzrPDzdT9NCYyLVBBdEs77
+      bucketname: edu-guli1010
+
+# Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+# 解决方法：
+#       1. 添加上数据库配置
+#       2. 启动类添加属性，@SpringBootAplication(exclude= DataSourceAutoConfiguration.class)

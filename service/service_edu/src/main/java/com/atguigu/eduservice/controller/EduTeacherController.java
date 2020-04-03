@@ -4,10 +4,8 @@ package com.atguigu.eduservice.controller;
 import com.atguigu.commonutils.R;
 import com.atguigu.eduservice.entity.EduTeacher;
 import com.atguigu.eduservice.service.EduTeacherService;
-import com.atguigu.eduservice.vo.input.TeacherQuery;
-import com.atguigu.servicebase.config.exception.CustomException;
+import com.atguigu.eduservice.vo.TeacherQuery;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -117,11 +115,11 @@ public class EduTeacherController {
     @PostMapping("/updateTeacher")
     public R updateTeacher(@RequestBody EduTeacher eduTeacher){
         //  自定义异常处理
-        try {
-            int i = 10/0;
-        }catch (Exception e){
-            throw new CustomException(20001,"错误");
-        }
+//        try {
+//            int i = 10/0;
+//        }catch (Exception e){
+//            throw new CustomException(20001,"错误");
+//        }
 
         boolean update = eduTeacherService.updateById(eduTeacher);
         if (update){

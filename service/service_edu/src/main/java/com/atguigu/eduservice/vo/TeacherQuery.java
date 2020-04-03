@@ -1,4 +1,4 @@
-package com.atguigu.eduservice.vo.input;
+package com.atguigu.eduservice.vo;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
