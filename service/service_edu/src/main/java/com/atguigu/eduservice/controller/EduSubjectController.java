@@ -4,6 +4,7 @@ package com.atguigu.eduservice.controller;
 import com.atguigu.commonutils.R;
 import com.atguigu.eduservice.service.EduSubjectService;
 import com.atguigu.eduservice.vo.OneSubject;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,7 +37,7 @@ public class EduSubjectController {
     @GetMapping("/getAllSubject")
     public R getAllSubject(){
         List<OneSubject> list = eduSubjectService.getAllSubject();
-        return R.ok();
+        return R.ok().data("list",list);
     }
 }
 

@@ -17,7 +17,7 @@ public class OneSubject {
 
     private String id;
 
-    private String name;
+    private String title;
 
     private List<TwoSubject> children = new ArrayList<>();
 
