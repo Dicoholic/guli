@@ -2,10 +2,13 @@ package com.atguigu.eduservice.service.impl;
 
 import com.atguigu.eduservice.entity.EduCourse;
 import com.atguigu.eduservice.entity.EduCourseDescription;
+import com.atguigu.eduservice.entity.EduSubject;
 import com.atguigu.eduservice.mapper.EduCourseMapper;
 import com.atguigu.eduservice.service.EduCourseDescriptionService;
 import com.atguigu.eduservice.service.EduCourseService;
+import com.atguigu.eduservice.service.EduSubjectService;
 import com.atguigu.eduservice.vo.CourseInfoVo;
+import com.atguigu.eduservice.vo.CoursePublishVo;
 import com.atguigu.servicebase.config.exception.CustomException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.BeanUtils;
@@ -42,5 +45,28 @@ public class EduCourseServiceImpl extends ServiceImpl<EduCourseMapper, EduCourse
         eduCourseDescription.setId(cid);
         eduCourseDescriptionService.save(eduCourseDescription);
         return cid;
+    }
+
+    @Override
+    public void updateCourseInfo(CourseInfoVo courseInfoVo) {
+        // 更新课程基信息
+        EduCourse eduCourse = new EduCourse();
+        BeanUtils.copyProperties(courseInfoVo,eduCourse);
+        int insert = baseMapper.updateById(eduCourse);
+        if (insert == 0){
+            throw  new CustomException(20001,"修改课程信息失败");
+        }
+        String cid = eduCourse.getId();
+        // 更新课程简介
+        EduCourseDescription eduCourseDescription = new EduCourseDescription();
+        eduCourseDescription.setId(courseInfoVo.getId());
+        eduCourseDescription.setDescription(courseInfoVo.getDescription());
+        eduCourseDescriptionService.updateById(eduCourseDescription);
+    }
+
+    @Override
+    public CoursePublishVo getCourseInfoById(String id) {
+        CoursePublishVo courseInfoByCourseId = baseMapper.getCourseInfoByCourseId(id);
+        return courseInfoByCourseId;
     }
 }
